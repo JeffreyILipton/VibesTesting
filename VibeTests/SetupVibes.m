@@ -33,4 +33,4 @@ tc3 = s.Channels(3);
 tc3.Sensitivity = 48.9/1000;
 set(tc3)
 
-
+run=0;

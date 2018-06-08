@@ -1,9 +1,22 @@
 %%
-%S = load('.\Data\Static.mat');
-%S = load('.\Data\VibeOnTeflonHandOnDamper.mat');
-%S = load('.\Data\VibeOnTeflonWristOnDamper.mat');
-S = load('.\Data\test1.mat');
-data = S.data;
+save_path = '.\Data\';
+file_name = 'test1'
+Record_Time = 5;
+s.DurationInSeconds = Record_Time;
+
+figure(1);
+clf(1);
+[data,time] = s.startForeground();
+plot(time,data(:,1:3))
+grid on;
+xlabel('Time (sec)');
+ylabel('g');
+s.release();
+
+%csvwrite(filename,data);
+save(strcat(save_path,file_name),'time','data');
+accel = data(:,1);
+
 
 
 %%
@@ -46,33 +59,4 @@ xlabel('Frequency (Hz)')
 ylabel('PSD (dB)')
 
 %%
-
-Xf = fft(Xdata);
-Yf = fft(Ydata);
-Zf = fft(Zdata);
-L = length(Ydata);
-
-f = Fs*(0:(L/2))/L;
-
-XP2 = abs(Xf/L);
-XP1 = XP2(1:L/2+1);
-XP1(2:end-1) = 2*XP1(2:end-1);
-
-YP2 = abs(Yf/L);
-YP1 = YP2(1:L/2+1);
-YP1(2:end-1) = 2*YP1(2:end-1);
-
-ZP2 = abs(Zf/L);
-ZP1 = ZP2(1:L/2+1);
-ZP1(2:end-1) = 2*ZP1(2:end-1);
-
-figure(3)
-plot(f(1:FLimit),XP1(1:FLimit))
-hold on
-plot(f(1:FLimit),YP1(1:FLimit))
-plot(f(1:FLimit),ZP1(1:FLimit))
-title('Single-Sided Amplitued Spectrum');
-xlabel('f (Hz)');
-ylabel('Magnitude');
-
 
