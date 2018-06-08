@@ -2,6 +2,7 @@
 save_path = '.\Data\';
 file_name = 'test1'
 Record_Time = 5;
+
 s.DurationInSeconds = Record_Time;
 run=run+1;
 figure(1+run);
