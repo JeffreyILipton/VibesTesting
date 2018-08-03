@@ -3,8 +3,8 @@ save_path = '.\Data\';
 Record_Time =120; %% two minutes
 
 %% Palm / Wrist / Finger / FingerNoPad // WristNoPad / PalmNoPad
-type = 'palm';
-userNumber = 13;
+type = 'Wrist';
+userNumber = 12;
 file_name = ['USER',num2str(userNumber),'-',type];
 
 
